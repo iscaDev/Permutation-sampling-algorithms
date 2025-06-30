@@ -30,18 +30,18 @@ for size in sizes:
     # Fisher-Yates implementation 
     start = time.time()
     fisher_yates(arr[:])
-    fisher_times.append(time.time() - start)
+    fisher_times.append((time.time() - start)*1000)
 
     # NumPy implementation
     arr_np = numpy.array(arr)
     start = time.time()
     numpy_implementation(arr_np)
-    numpy_times.append(time.time() - start)
+    numpy_times.append((time.time() - start)*1000)
 
 plt.plot(sizes, fisher_times, label='Fisher-Yates', marker='o')
 plt.plot(sizes, numpy_times, label='NumPy Implementation', marker='o')
 plt.xlabel('Input Size (n)')
-plt.ylabel('Execution Time (seconds)')
+plt.ylabel('Execution Time (milliseconds)')
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
