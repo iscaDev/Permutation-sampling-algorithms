@@ -23,12 +23,11 @@ def benchmark_sampler(n, runs):
         start = time.perf_counter()
         uniform_sort_sampler(n)
         end = time.perf_counter()
-        times.append((end - start)*1000)
+        times.append((end - start)*1000) # in milliseconds
     
     return np.array(times)
 
 # plotting the results
-
 
 def plotting(sizes, runs=100): # runs 100 times over each permutation size, n
     means = []
