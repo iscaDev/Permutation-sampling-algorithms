@@ -9,7 +9,7 @@ def uniform_sort_sampler(n):
     random_values = np.random.uniform(0, 1, size=n)
     
     # sort and get the permutation (of indices)
-    permutation = np.argsort(random_values) 
+    permutation = np.argsort(random_values) # by default, uses quick sort algorithm
     
     return permutation
 
