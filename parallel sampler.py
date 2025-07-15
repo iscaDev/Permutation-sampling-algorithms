@@ -29,22 +29,21 @@ def benchmark_sampler(n, runs):
 
 # plotting the results
 
-def plotting(sizes, runs=100): # runs 100 times over each permutation size, n
+def plotting(sizes, runs=100):  # runs 100 times over each permutation size, n
     means = []
     errors = []
 
     for n in sizes:
         times = benchmark_sampler(n, runs)
         mean = np.mean(times)
-        stderr = np.std(times, ddof=1) / np.sqrt(runs)
-        ci = 1.96 * stderr
+        std_dev = np.std(times, ddof=1)  # Use sample standard deviation
         means.append(mean)
-        errors.append(ci)
+        errors.append(std_dev)
 
     plt.errorbar(sizes, means, yerr=errors, fmt='-o', capsize=8)
     plt.xlabel('Permutation size (n)')
     plt.ylabel('Mean execution time (milliseconds)')
-    plt.title('Mean execution time with 95% confidence interval')
+    plt.title('Mean execution time with standard deviation')
     plt.grid(True)
     plt.show()
     
