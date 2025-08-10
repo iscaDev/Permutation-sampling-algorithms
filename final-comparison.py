@@ -51,7 +51,7 @@ def benchmark(method, arr, nthreads=1, repeat=30):
 
 # Parameters
 sizes = np.arange(start=10000, stop=101000, step=10000)
-threads = [1, 2, 4, 8, 16]
+threads = [1, 2, 4, 8, 16] # can be changed depending on the CPU
 
 # Run benchmark
 results_parallel = {t: [] for t in threads}
@@ -88,8 +88,9 @@ plt.plot(sizes, results_numpy, label="NumPy permutation",
 plt.plot(sizes, results_argsort, label="Argsort of uniform",
          linestyle=':', marker='d', linewidth=1, markersize=4, color='gray')
 
-plt.plot(sizes, results_fy, label="Fisher-Yates",
-          linestyle='-', marker='s', linewidth=1, markersize=4, color='green')
+# Fisher-Yates is not displayed as it is scaling up the plot
+# plt.plot(sizes, results_fy, label="Fisher-Yates",
+#           linestyle='-', marker='s', linewidth=1, markersize=4, color='green')
 
 # Threaded implementations
 for t in threads:
@@ -105,6 +106,7 @@ plt.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)
 
 plt.tight_layout()
 plt.show()
+
 
 
 
